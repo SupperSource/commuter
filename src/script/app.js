@@ -97,20 +97,10 @@ setTimeout(() => {
 send.addEventListener("click", async () => {
   switch (opt.value) {
     case "GET":
-      for (let i = 0; i < headercount; i++) {
-        let key = document.getElementById(`parameterKey${i + 1}`);
-        let val = document.getElementById(`parameterValue${i + 1}`);
-
-        const obj = {
-          key: key.value,
-          value: val.value,
-        };
-
-        headersname.push(obj);
-      }
+      headersname.push({ "Access-Control-Allow-Origin": true });
       let resp = await axios
         .get(sendform.value, {
-          headers: headersname,
+          headers: { "Access-Control-Allow-Origin": true }, 
         })
         .then((resp) => {
           return resp;
